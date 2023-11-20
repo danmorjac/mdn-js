@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8"/>
+    <title>Math: Task 1</title>
+    <style>
+      p {
+        color: purple;
+        margin: 0.5em 0;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+    </style>
+    <link rel="stylesheet" href="../styles.css" />
+  </head>
+
+  <body>
+
+    <section class="preview">
+
+
+
+    </section>
+
+  </body>
+  <script>
+
+    let finalResult;
+    let evenOddResult;
+
+    // Add your code here
+
+    // 1. Create four variables with numeric values
+
+    let num1 = 4;
+    let num2 = 8;
+    let num3 = 12;
+    let num4 = 8;
+
+    // 2. Add the first two variables and store the result in another variable
+
+    let sum = num1 + num2;
+
+    // Subtract the fourth variable from the third and store the result
+    let difference = num3 - num4;
+
+    // 3. Multiply the results from steps 2 and 3 and store in finalResult
+
+    finalResult = sum * difference;
+
+    // 4. Check if finalResult is an even number
+
+    evenOddResult = finalResult % 2;
+
+    // Don't edit the code below here!
+
+    const section = document.querySelector('section');
+
+    const para1 = document.createElement('p');
+    const finalResultCheck = finalResult === 48 ? `Yes, well done!` : `No, it is ${ finalResult }`;
+    para1.textContent = `Is the finalResult 48? ${ finalResultCheck }`;
+    const para2 = document.createElement('p');
+    const evenOddResultCheck = evenOddResult === 0 ? 'The final result is even!' : 'The final result is odd. Hrm.';
+    para2.textContent = evenOddResultCheck;
+
+    section.appendChild(para1);
+    section.appendChild(para2);
+  </script>
+
+</html>
