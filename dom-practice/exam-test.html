@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+
+<body>
+
+  <script>
+
+    let body = document.body;
+
+    const header = document.createElement('header');
+
+    body.prepend(header);
+
+    const h1 = document.createElement('h1');
+
+    h1.textContent = 'Title';
+
+    header.append(h1);
+
+    const subtitle = document.createElement('p');
+
+    subtitle.append(document.createTextNode('My first web'));
+
+    h1.after(subtitle);
+
+    const userList = document.createElement('ul');
+
+    ['Dani', 'Pablo', 'MA'].forEach(user => {
+      const li = document.createElement('li');
+      li.textContent = user;
+      userList.append(li);
+    })
+
+    body.append(userList);
+
+    // Sort List
+
+    const userLis = Array.from(body.querySelectorAll('li'));
+    const sortedUsers = (userLis).slice().sort((a, b) => a.innerText > b.innerText);
+    sortedUsers.forEach(user => userList.append(user));
+
+
+
+    //Move to first the clicked user
+
+    userList.onclick = moveFirst;
+
+    /** @param {MouseEvent} event  */
+    function moveFirst(event) {
+
+      let target = event.target;
+
+      if (target?.nodeName !== 'LI') return;
+
+      userList.prepend(target);
+
+    };
+
+    // Add a user
+
+    const addinput = document.createElement('input');
+    addinput.name = 'addUser';
+    addinput.type = 'text';
+    addinput.placeholder = 'Write a user to insert';
+
+    addinput.addEventListener('keypress', event => {
+      if (event.key === 'Enter') {
+
+        const li = document.createElement('li');
+        li.textContent = addinput.value;
+        addinput.value = '';
+        userList.append(li);
+
+      }
+    });
+
+    userList.before(addinput);
+
+
+    // Search For Users
+    const searchinput = document.createElement('input');
+    searchinput.name = 'searchUser';
+    searchinput.type = 'text';
+    searchinput.placeholder = 'Write a user to search';
+    searchinput.addEventListener('input', event => {
+      let searchTerm = event.target.value.toLowerCase(); // Convertimos el texto de búsqueda a minúsculas
+      userLis.forEach(li => {
+        let username = li.textContent.toLowerCase(); // Convertimos el nombre de usuario a minúsculas
+        if (username.includes(searchTerm)) {
+          li.style.display = ''; // Si el nombre de usuario coincide, mostramos el elemento
+        } else {
+          li.style.display = 'none'; // Ocultamos el elemento si no coincide
+        }
+      });
+    });
+    userList.after(searchinput);
+
+
+    // Color the selected
+
+    userList.addEventListener('mousedown', (event) => {
+      let target = event.target;
+
+      if (target.tagName !== 'LI') { return; }
+
+      target.style.backgroundColor = 'yellow';
+      
+    });
+
+    userList.addEventListener('mouseup', (event) => {
+      let target = event.target;
+
+      if (target.tagName !== 'LI') { return; }
+
+      target.style.backgroundColor = '';
+    });
+
+
+    let div = document.createElement('div');
+
+    div.className = 'payaso';
+
+    div.insertAdjacentHTML('afterbegin', '<p>Hola</p>');
+
+    body.append(div);
+
+
+
+
+
+
+  </script>
+
+</body>
+
+</html>

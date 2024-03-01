@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Test</title>
+
+  <style>
+    .alert {
+      padding: 15px;
+      border: 1px solid #d6e9c6;
+      border-radius: 4px;
+      color: #3c763d;
+      background-color: #dff0d8;
+    }
+  </style>
+</head>
+
+<body>
+  <p>Hello</p>
+  <p id="john">John </p>
+  <p>Bye</p>
+  <script>
+
+    /*
+<div class = "alert">
+  <strong>Hi there!</strong> You've read an inportant messasge.
+  </div>
+  */
+
+    /*
+document.body.innerHTML = `
+<div class = "alert">
+  <strong>Hi there!</strong> You've read an inportant messasge.
+  </div>`
+  */
+
+    let div = document.createElement('div');
+    //let textNode = document.createTextNode('Here I am');
+
+    div.className = "alert";
+    div.innerHTML = "<strong>Hi there!</strong> You've read an inportant messasge.";
+
+    //document.body.prepend(div);
+    //document.body.children[1].before(div);
+    //document.querySelector('#john').before(div);
+    document.getElementById('john').before(div);
+
+    //Challenge: Hacer lo anterior sin usar innerHTML.
+
+    //let textNode = document.createTextNode('Here I am');
+    //document.getElementById('john').before(div,textNode,' again');
+
+    let john = document.getElementById('john');
+    //john.remove();
+    document.body.append(john)
+    
+    //document.body.append(div.cloneNode(true));
+    //document.body.append(div.cloneNode(false));
+
+  </script>
+</body>
+
+</html>
