@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+</head>
+<!-- 1 -->
+
+<body>
+  <ul>
+    <li>Gato <em>lindo</em></li>
+    <li>Cuenta <span>0</span></li>
+  </ul>
+  <div>
+    <p><em>Hola</em></p>
+  </div>
+  <div>
+    <ul>
+      <li>Oso feliz</li>
+      <li>Vaca <em>loca</em></li>
+    </ul>
+    <p>Adiós</p>
+  </div>
+
+  <script>
+
+    // 2
+
+    const list = document.querySelector('div ul');
+
+    list.remove();
+
+    const parrafoAdios = document.querySelector('div:last-of-type p:last-of-type');
+
+    parrafoAdios.parentNode.insertBefore(list, parrafoAdios.nextSibling);
+
+    /*
+    const osoList = document.querySelector('div > ul');
+    osoList.parentElement.append(osoList); 
+    // parent element es el div
+    */
+
+    // 3
+
+    const listEl = document.querySelector('div ul li:first-child');
+
+    listEl.append(" y contento");
+
+    /*
+    document.querySelector('div > ul > li').append(' y contento');
+    */
+
+    // 4
+
+    const parrafoHola = document.querySelector('div > p');
+    const button = document.createElement("button");
+    button.append("Borra");
+
+    parrafoHola.parentNode.insertBefore(button, parrafoHola.nextSibling);
+
+    /*
+    const btnDel = document.createElement('button');
+    btnDel.textContent = 'Borra';
+    document.querySelector('div > p').after(btnDel);
+    */
+
+    // 5
+
+    const borraractionycuenta = document.querySelector("ul li span");
+
+    const aumentanumero = function () {
+      borraractionycuenta.textContent = parseInt(borraractionycuenta.textContent) + 1;
+    }
+
+    button.addEventListener('click', aumentanumero);
+
+    const primerem = document.querySelector('em');
+
+    const borrarem = function () { primerem.remove() }
+
+    button.addEventListener('click', borrarem, aumentanumero);
+
+
+    /*
+        const count = docuemnt.querySelector('span');
+        function btnHandler (){
+          count.textContent++;
+          document.querySelector('em')?.remove();
+        }
+        button.onclick=btnHandler;
+        
+    */
+
+    // 6
+
+    list.addEventListener('click', (event) => {
+
+      if (event.target.tagName !== 'LI') { return; }
+
+      event.target.style.backgroundColor = 'yellow';
+
+      button.style.color = button.style.color === 'red' ? 'black' : 'red';
+    });
+
+
+
+
+  </script>
+</body>
+
+</html>
